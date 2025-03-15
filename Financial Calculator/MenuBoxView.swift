@@ -16,7 +16,7 @@ struct MenuBoxView: View {
             RoundedRectangle(cornerRadius: 3)
                                         .strokeBorder()
                                         .foregroundColor(.purple)
-            VStack(alignment: .center) {
+            HStack(alignment: .center) {
                 if typeSF{
                     Image(systemName: imageName)
                         .imageScale(.large)
