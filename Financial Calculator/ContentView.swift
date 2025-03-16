@@ -20,6 +20,9 @@ struct ContentView: View {
                     NavigationLink(destination: InterestCalculationView()){
                         MenuBoxView(boxText: "Savings Calculation", imageName: "Interest", typeSF: false)
                     }
+                    NavigationLink(destination: AnnuityCalculationView()){
+                        MenuBoxView(boxText: "Payment Calculation", imageName: "Interest", typeSF: false)
+                    }
                     MenuBoxView(boxText: "Interest Calculation", imageName: "heart.fill", typeSF: true)
                     MenuBoxView(boxText: "Interest Calculation", imageName: "heart.fill", typeSF: true)
                     MenuBoxView(boxText: "Interest Calculation", imageName: "heart.fill", typeSF: true)

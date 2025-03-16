@@ -27,11 +27,11 @@ struct InterestCalculationView: View {
     }
     
     func calculate()-> String{
-        let presentValue = Double(presentValue) ?? 0.00
-        let futureValue = Double(futureValue) ?? 0.00
-        var interest = Double(interest) ?? 0.00
-        var period = Double(period) ?? 0.00
-        let compoundPeriod = Double(compoundPeriod) ?? 0.00
+        let presentValue =  Double(presentValue) ?? 0.00
+        let futureValue =  Double(futureValue) ?? 0.00
+        var interest =  Double(interest) ?? 0.00
+        var period =  Double(period) ?? 0.00
+        let compoundPeriod =  Double(compoundPeriod) ?? 0.00
         
         period = period / 12
         interest = interest / 100
@@ -135,6 +135,7 @@ struct InterestCalculationView: View {
                                 TextField("0", text: $compoundPeriod)
                                     .keyboardType(.decimalPad)
                                     .multilineTextAlignment(.trailing)
+                                Text("Times")
                             }
                         } label: {
                             Text("Compounds per Year")
