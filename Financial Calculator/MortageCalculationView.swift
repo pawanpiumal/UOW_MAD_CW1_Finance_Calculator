@@ -1,13 +1,13 @@
 //
-//  AnnutiyCalculationView.swift
+//  MortageCalculationView.swift
 //  Financial Calculator
 //
-//  Created by GPPA on 2025-03-15.
+//  Created by GPPA on 2025-03-17.
 //
 
 import SwiftUI
 
-struct AnnuityCalculationView: View {
+struct MortageCalculationView: View {
     @State private var selectedType: AnnuityType = .ordinary
     @State private var resultType: AnnuityResultTypes = .futureValue
     
@@ -20,61 +20,11 @@ struct AnnuityCalculationView: View {
     @State private var payment: String = ""
     
     func clear(){
-        initialInvestment = ""
-        futureValue = ""
-        interest = ""
-        period = ""
-        paymentPerYear = ""
-        interestPerYear = ""
-        payment = ""
+        
     }
     
-    func calculate()-> String{
-        let initialInvestment = Double(initialInvestment) ?? 0.00
-        let futureValue = Double(futureValue) ?? 0.00
-        var interest = Double(interest) ?? 0.00
-        var period = Double(period) ?? 0.00
-        let paymentPerYear = Double(paymentPerYear) ?? 0.00
-        let interestPerYear = Double(interestPerYear) ?? 0.00
-        let payment = Double(payment) ?? 0.00
-        
-        interest = interest / 100
-        period = period / 12
-        
-        var result = 0.00
-        
-        switch(resultType){
-        case .futureValue:
-            if(selectedType == .ordinary){
-                result = AnnuityCalculation().futureValueOrdinary(initialInvestment: initialInvestment, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
-            }else{
-                result = AnnuityCalculation().futureValueDue(initialInvestment: initialInvestment, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
-            }
-        case .initialInvestment:
-            if selectedType == .ordinary{
-                result = AnnuityCalculation().initialInvestmentOrdinary(futureValue: futureValue, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
-            }else{
-                result = AnnuityCalculation().initialInvestmentDue(futureValue: futureValue, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
-            }
-        case .payment:
-            if selectedType == .ordinary{
-                result = AnnuityCalculation().paymentOrdinary(futureValue: futureValue, initialInvestment: initialInvestment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
-            }else{
-                result = AnnuityCalculation().paymentDue(futureValue: futureValue, initialInvestment: initialInvestment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
-            }
-        case .presentValue:
-            if selectedType == .ordinary{
-                result = AnnuityCalculation().presentValueOrdinary(initialInvestment: initialInvestment, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
-            }else{
-                result = AnnuityCalculation().presentValueDue(initialInvestment: initialInvestment, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
-            }
-        }
-        
-        if(result.isNaN || result.isInfinite){
-            result = 0.00
-        }
-        
-        return String(format : "%.2f", result)
+    func calculate()->String{
+        return "1"
     }
     
     var body: some View {
@@ -188,7 +138,7 @@ struct AnnuityCalculationView: View {
                 }
                 
             }
-            .navigationTitle(Text("Payment Calculator"))
+            .navigationTitle(Text("Mortage Calculator"))
             .toolbar{
                 ToolbarItem{
                     Button("Clear"){
@@ -201,5 +151,5 @@ struct AnnuityCalculationView: View {
 }
 
 #Preview {
-    AnnuityCalculationView()
+    MortageCalculationView()
 }

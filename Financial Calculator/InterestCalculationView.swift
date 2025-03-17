@@ -88,7 +88,7 @@ struct InterestCalculationView: View {
                     }
                 }
                 
-
+                
                 Section (header: Text("Input Values")){
                     if(selectedType != .presentValue){
                         LabeledContent {
@@ -158,14 +158,16 @@ struct InterestCalculationView: View {
                 
                 Section{
                     HStack{
-                        Text(calculate())
                         switch(selectedType){
                         case .futureValue, .presentValue:
-                                Text("LKR")
+                            Text("LKR")
+                            Text(calculate())
                         case .period:
-                                Text("Months")
+                            Text(calculate())
+                            Text("Months")
                         case .interest:
-                                Text("%")
+                            Text(calculate())
+                            Text("%")
                         }
                     }
                     

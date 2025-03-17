@@ -42,6 +42,11 @@ class AnnuityCalculation{
         return paymentFutureValue / compoundingFactor
     }
     
+    // Can't calculate algebraically for annuities with an initial investment. Need to use numerical methods to solve for t.
+    func periodOrdinary(futureValue: Double, interest: Double, paymentPerYear: Double,  interestPerYear: Double, payment: Double)-> Double{
+        return 0.00
+    }
+    
     // Annuity Due: Payment at the beginning of the month
     func futureValueDue (initialInvestment: Double, payment: Double, interest: Double, paymentPerYear: Double, interestPerYear: Double, period: Double) -> Double{
         let c = interestPerYear / paymentPerYear
