@@ -9,6 +9,8 @@ import Foundation
 class LoanCalculation{
     
     // Ordinary Annuity  - Payment at end of period
+    
+    // calculate loan future value
     func loanFutureValueOrdinary(payment: Double,
                                  interest: Double,
                                  paymentPerYear: Double,
@@ -18,6 +20,7 @@ class LoanCalculation{
         return AnnuityCalculation().futureValueOrdinary(initialInvestment: 0, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
     }
     
+    // calculate loan value (annuity present value)
     func loanValueOrdinary (payment: Double,
                             interest: Double,
                             paymentPerYear: Double,
@@ -27,6 +30,7 @@ class LoanCalculation{
         return AnnuityCalculation().presentValueOrdinary (initialInvestment: 0, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
     }
     
+    // calculate payment
     func loanPaymentOrdinary(loanValue: Double,
                              interest: Double,
                              paymentPerYear: Double,
@@ -37,6 +41,7 @@ class LoanCalculation{
         return loanValue * ERR / (1 - pow(1 + ERR, -period * paymentPerYear))
     }
     
+    // calculate time period
     func loanPeriodOrdinary(loanValue: Double,
                             payment: Double,
                             interest: Double,
@@ -49,6 +54,7 @@ class LoanCalculation{
     
 }
 
+// results from the loan view
 enum LoanResultType: String, CaseIterable, Identifiable {
     case period = "Time Period"
     case loanValue = "Loan Value"

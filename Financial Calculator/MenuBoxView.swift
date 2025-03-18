@@ -11,6 +11,9 @@ struct MenuBoxView: View {
     let boxText: String
     let imageName: String
     let typeSF: Bool
+    
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 3)
@@ -22,9 +25,16 @@ struct MenuBoxView: View {
                         .imageScale(.large)
                         .font(.largeTitle)
                 }else{
-                    Image(imageName)
-                        .imageScale(.large)
-                        .font(.largeTitle)
+                    if(colorScheme == .light){
+                        Image(imageName)
+                            .imageScale(.large)
+                            .font(.largeTitle)
+                    }else{
+                        // White images for Dark Mode
+                        Image(imageName+"DM")
+                            .imageScale(.large)
+                            .font(.largeTitle)
+                    }
                 }
                 
                 Text(boxText)

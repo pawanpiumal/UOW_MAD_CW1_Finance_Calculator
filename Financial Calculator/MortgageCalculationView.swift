@@ -1,5 +1,5 @@
 //
-//  MortageCalculationView.swift
+//  MortgageCalculationView.swift
 //  Financial Calculator
 //
 //  Created by GPPA on 2025-03-17.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct MortageCalculationView: View {
-    @State private var resultType: MortageResultType = .period
+struct MortgageCalculationView: View {
+    @State private var resultType: MortgageResultType = .period
 
     
     @State private var homePrice: String = ""
@@ -45,11 +45,11 @@ struct MortageCalculationView: View {
         
         switch(resultType){
         case .homePrice:
-            result = MortageCalculation().mortageHomePrice(downPayment: downPayment, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
+            result = MortgageCalculation().mortgageHomePrice(downPayment: downPayment, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
         case .payment:
-            result = MortageCalculation().mortagePayment(homePrice: homePrice, downPayment: downPayment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
+            result = MortgageCalculation().mortgagePayment(homePrice: homePrice, downPayment: downPayment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
         case .period:
-            result = MortageCalculation().mortagePeriod(homePrice: homePrice, downPayment: downPayment, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear)
+            result = MortgageCalculation().mortgagePeriod(homePrice: homePrice, downPayment: downPayment, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear)
         }
         
         if(result.isInfinite){
@@ -62,7 +62,7 @@ struct MortageCalculationView: View {
         if(resultType == .period){
             return String(format : "%.2f", result)+" months"
         }else{
-            return String(format : "%.2f", result)
+            return "LKR " + String(format : "%.2f", result)
         }
     }
     
@@ -71,7 +71,7 @@ struct MortageCalculationView: View {
             Form{
                 Section{
                     Picker("Calculate", selection: $resultType) {
-                        ForEach(MortageResultType.allCases){ resultType in
+                        ForEach(MortgageResultType.allCases){ resultType in
                             Text(resultType.rawValue)
                         }
                     }
@@ -169,7 +169,7 @@ struct MortageCalculationView: View {
                 }
                 
             }
-            .navigationTitle(Text("Mortage Calculator"))
+            .navigationTitle(Text("Mortgage Calculator"))
             .toolbar{
                 ToolbarItem{
                     Button("Clear"){
@@ -182,5 +182,5 @@ struct MortageCalculationView: View {
 }
 
 #Preview {
-    MortageCalculationView()
+    MortgageCalculationView()
 }

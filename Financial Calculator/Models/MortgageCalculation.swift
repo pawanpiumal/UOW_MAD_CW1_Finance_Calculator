@@ -1,5 +1,5 @@
 //
-//  MortageCalculation.swift
+//  MortgageCalculation.swift
 //  Financial Calculator
 //
 //  Created by GPPA on 2025-03-17.
@@ -7,9 +7,10 @@
 
 import Foundation
 
-class MortageCalculation{
+class MortgageCalculation{
     
-    func mortagePeriod(homePrice: Double,
+    // calculate mortgage period
+    func mortgagePeriod(homePrice: Double,
                        downPayment: Double,
                        payment: Double,
                        interest: Double,
@@ -19,7 +20,8 @@ class MortageCalculation{
         return LoanCalculation().loanPeriodOrdinary(loanValue: homePrice - downPayment, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear)
     }
     
-    func mortageHomePrice(downPayment:Double,
+    // calculate home price (annuity present value, loan present value)
+    func mortgageHomePrice(downPayment:Double,
                    payment: Double,
                    interest: Double,
                    paymentPerYear: Double,
@@ -29,7 +31,8 @@ class MortageCalculation{
         return LoanCalculation().loanValueOrdinary(payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period) + downPayment
     }
     
-    func mortagePayment(homePrice: Double,
+    // calculate payment
+    func mortgagePayment(homePrice: Double,
                         downPayment: Double,
                         interest: Double,
                         paymentPerYear: Double,
@@ -41,7 +44,8 @@ class MortageCalculation{
     
 }
 
-enum MortageResultType: String, CaseIterable, Identifiable {
+// results from the mortgage screen
+enum MortgageResultType: String, CaseIterable, Identifiable {
     case period = "Time Period"
     case homePrice = "Home Price"
     case payment = "Payment"

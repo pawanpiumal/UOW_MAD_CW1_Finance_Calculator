@@ -10,6 +10,8 @@ import Foundation
 class AnnuityCalculation{
     
     // Ordinary Annuity  - Payment at end of period
+    
+    //Calculate future value
     func futureValueOrdinary (initialInvestment: Double, payment: Double, interest: Double, paymentPerYear: Double, interestPerYear: Double, period: Double) -> Double{
         let c = interestPerYear / paymentPerYear
         let p = (pow(1 + interest/interestPerYear, c) - 1)
@@ -18,6 +20,7 @@ class AnnuityCalculation{
         return initialFutureValue + paymentFutureValue
     }
     
+    // Calculate present value
     func presentValueOrdinary (initialInvestment: Double, payment: Double, interest: Double, paymentPerYear: Double, interestPerYear: Double, period: Double) -> Double{
         let c = interestPerYear / paymentPerYear
         let p = (pow(1 + interest/interestPerYear, c) - 1)
@@ -25,6 +28,7 @@ class AnnuityCalculation{
         return initialInvestment + paymentPresentValue
     }
     
+    // Calculate initial investment necessary to get a given future value and payment
     func initialInvestmentOrdinary(futureValue: Double, payment: Double, interest: Double,paymentPerYear: Double, interestPerYear: Double, period: Double) -> Double{
         let c = interestPerYear / paymentPerYear
         let p = (pow(1 + interest/interestPerYear, c) - 1)
@@ -33,6 +37,7 @@ class AnnuityCalculation{
         return InterestCalculation().presentValueCompound(futureValue: investmentFutureValue, interest: interest, period: period, compoundPeriod: interestPerYear)
     }
     
+    // Calculate payment
     func paymentOrdinary(futureValue: Double, initialInvestment: Double, interest: Double,paymentPerYear: Double, interestPerYear: Double, period: Double) -> Double{
         let c = interestPerYear / paymentPerYear
         let p = (pow(1 + interest/interestPerYear, c) - 1)
@@ -47,7 +52,10 @@ class AnnuityCalculation{
         return 0.00
     }
     
+    
     // Annuity Due: Payment at the beginning of the month
+    
+    // Calculate future value
     func futureValueDue (initialInvestment: Double, payment: Double, interest: Double, paymentPerYear: Double, interestPerYear: Double, period: Double) -> Double{
         let c = interestPerYear / paymentPerYear
         let p = (pow(1 + interest/interestPerYear, c) - 1)
@@ -56,6 +64,7 @@ class AnnuityCalculation{
         return initialFutureValue + paymentFutureValue
     }
     
+    // Calculate present value
     func presentValueDue (initialInvestment: Double, payment: Double, interest: Double, paymentPerYear: Double, interestPerYear: Double, period: Double) -> Double{
         let c = interestPerYear / paymentPerYear
         let p = (pow(1 + interest/interestPerYear, c) - 1)
@@ -63,12 +72,14 @@ class AnnuityCalculation{
         return initialInvestment + paymentPresentValue
     }
     
+    // Calculate initial investment
     func initialInvestmentDue(futureValue: Double, payment: Double, interest: Double,paymentPerYear: Double, interestPerYear: Double, period: Double) -> Double{
         let paymentFutureValue = self.futureValueDue(initialInvestment: 0, payment: payment, interest: interest, paymentPerYear: paymentPerYear, interestPerYear: interestPerYear, period: period)
         let investmentFutureValue = futureValue - paymentFutureValue
         return InterestCalculation().presentValueCompound(futureValue: investmentFutureValue, interest: interest, period: period, compoundPeriod: interestPerYear)
     }
     
+    // calculate payment
     func paymentDue(futureValue: Double, initialInvestment: Double, interest: Double,paymentPerYear: Double, interestPerYear: Double, period: Double) -> Double{
         let initialFutureValue = InterestCalculation().futureValueCompound(presentValue: initialInvestment, interest: interest, period: period, compoundPeriod: interestPerYear)
         let paymentFutureValue = futureValue - initialFutureValue
@@ -77,12 +88,14 @@ class AnnuityCalculation{
     }
 }
 
+// Annuity Type
 enum AnnuityType: String, Identifiable, CaseIterable{
     case ordinary = "End of the month"
     case due = "Start of the month"
     var id: Self {self}
 }
 
+// Results that can be calculated from the annuity view
 enum AnnuityResultTypes: String, CaseIterable, Identifiable {
     case futureValue = "Future Value"
     case presentValue = "Present Value"

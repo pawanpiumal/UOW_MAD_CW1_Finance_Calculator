@@ -72,7 +72,15 @@ struct InterestCalculationView: View {
         if(result.isNaN){
             return "Enter valid inputs"
         }
-        return String(format : "%.2f", result)
+        
+        switch(selectedType){
+        case .futureValue, .presentValue:
+            return "LKR " + String(format : "%.2f", result)
+        case .period:
+            return String(format : "%.2f", result) + " months"
+        case .interest:
+            return String(format : "%.2f", result) + "%"
+        }
     }
     
     var body: some View {
@@ -162,17 +170,7 @@ struct InterestCalculationView: View {
                 
                 Section{
                     HStack{
-                        switch(selectedType){
-                        case .futureValue, .presentValue:
-                            Text("LKR")
-                            Text(calculate())
-                        case .period:
-                            Text(calculate())
-                            Text("Months")
-                        case .interest:
-                            Text(calculate())
-                            Text("%")
-                        }
+                        Text(calculate())
                     }
                     
                 } header: {

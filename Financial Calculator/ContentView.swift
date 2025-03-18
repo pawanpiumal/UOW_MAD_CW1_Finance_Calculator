@@ -14,45 +14,37 @@ struct ContentView: View {
     
     let gridSpacing: CGFloat = 8
     var body: some View {
-        if(verticalSizeClass == .regular){
-            NavigationStack {
+        NavigationStack {
+            // for vertical view of mobile
+            if(verticalSizeClass == .regular){
                 LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: gridSpacing), count: 1), spacing: gridSpacing) {
-                    NavigationLink(destination: InterestCalculationView()){
-                        MenuBoxView(boxText: "Savings Calculation", imageName: "Interest", typeSF: false)
-                    }
-                    NavigationLink(destination: AnnuityCalculationView()){
-                        MenuBoxView(boxText: "Payment Calculation", imageName: "Interest", typeSF: false)
-                    }
-                    NavigationLink(destination: LoanCalculationView()){
-                        MenuBoxView(boxText: "Loan Calculation", imageName: "Interest", typeSF: false)
-                    }
-                    NavigationLink(destination: MortageCalculationView()){
-                        MenuBoxView(boxText: "Mortage Calculation", imageName: "Interest", typeSF: false)
-                    }
+                    MenuView()
                 }
                 .navigationTitle("Financial Calculator")
-            }
-            .padding()
-        }else{
-            NavigationStack {
+                .padding()
+                .toolbar{
+                    ToolbarItem{
+                        NavigationLink(destination: HelpView()){
+                            Text("Help")
+                        }
+                    }
+                }
+            }else{
+                // For Horizontal view of mobile
                 LazyHGrid(rows: Array(repeating: .init(.flexible(), spacing: gridSpacing), count: 2), spacing: gridSpacing) {
-                    NavigationLink(destination: InterestCalculationView()){
-                        MenuBoxView(boxText: "Savings Calculation", imageName: "Interest", typeSF: false)
-                    }
-                    NavigationLink(destination: AnnuityCalculationView()){
-                        MenuBoxView(boxText: "Payment Calculation", imageName: "Interest", typeSF: false)
-                    }
-                    NavigationLink(destination: LoanCalculationView()){
-                        MenuBoxView(boxText: "Loan Calculation", imageName: "Interest", typeSF: false)
-                    }
-                    NavigationLink(destination: MortageCalculationView()){
-                        MenuBoxView(boxText: "Mortage Calculation", imageName: "Interest", typeSF: false)
-                    }
+                    MenuView()
                 }
                 .flipsForRightToLeftLayoutDirection(true)
                 .navigationTitle("Financial Calculator")
+                .padding()
+                .toolbar{
+                    ToolbarItem{
+                        NavigationLink(destination: HelpView()){
+                            Text("Help")
+                        }
+                    }
+                }
             }
-            .padding()
         }
     }
 }

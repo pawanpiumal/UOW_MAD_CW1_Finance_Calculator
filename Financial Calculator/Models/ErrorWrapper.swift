@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Error details
 struct ErrorWrapper: Identifiable {
     let id: UUID
     let error: Error

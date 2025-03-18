@@ -57,7 +57,14 @@ struct LoanCalculationView: View {
         if(result.isNaN){
             return "Enter valid inputs"
         }
-        return String(format : "%.2f", result)
+        
+        if selectedType == .period{
+            return String(format : "%.2f", result) + " months"
+        }else{
+            return "LKR " + String(format : "%.2f", result)
+        }
+        
+        
     }
     
     var body: some View {
@@ -147,13 +154,7 @@ struct LoanCalculationView: View {
                 }
                 
                 Section{
-                    HStack{
-                        if selectedType == .period{
-                            Text("\(calculate()) months")
-                        }else{
-                            Text("LKR \(calculate())")
-                        }
-                    }
+                    Text(calculate())
                 } header: {
                     Text(selectedType.rawValue)
                 }

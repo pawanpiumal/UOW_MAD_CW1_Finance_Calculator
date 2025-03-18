@@ -79,7 +79,7 @@ struct AnnuityCalculationView: View {
         }
             
         
-        return String(format : "%.2f", result)
+        return "LKR " + String(format : "%.2f", result)
     }
     
     var body: some View {
@@ -186,7 +186,7 @@ struct AnnuityCalculationView: View {
                 
                 Section{
                     HStack{
-                        Text("LKR \(calculate())")
+                        Text("\(calculate())")
                     }
                 } header: {
                     Text(resultType.rawValue)
