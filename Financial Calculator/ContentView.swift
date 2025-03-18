@@ -23,9 +23,12 @@ struct ContentView: View {
                     NavigationLink(destination: AnnuityCalculationView()){
                         MenuBoxView(boxText: "Payment Calculation", imageName: "Interest", typeSF: false)
                     }
-                    MenuBoxView(boxText: "Interest Calculation", imageName: "heart.fill", typeSF: true)
-                    MenuBoxView(boxText: "Interest Calculation", imageName: "heart.fill", typeSF: true)
-                    MenuBoxView(boxText: "Interest Calculation", imageName: "heart.fill", typeSF: true)
+                    NavigationLink(destination: LoanCalculationView()){
+                        MenuBoxView(boxText: "Loan Calculation", imageName: "Interest", typeSF: false)
+                    }
+                    NavigationLink(destination: MortageCalculationView()){
+                        MenuBoxView(boxText: "Mortage Calculation", imageName: "Interest", typeSF: false)
+                    }
                 }
                 .navigationTitle("Financial Calculator")
             }
@@ -36,9 +39,15 @@ struct ContentView: View {
                     NavigationLink(destination: InterestCalculationView()){
                         MenuBoxView(boxText: "Savings Calculation", imageName: "Interest", typeSF: false)
                     }
-                    MenuBoxView(boxText: "Interest Calculation", imageName: "heart.fill", typeSF: true)
-                    MenuBoxView(boxText: "Interest Calculation", imageName: "heart.fill", typeSF: true)
-                    
+                    NavigationLink(destination: AnnuityCalculationView()){
+                        MenuBoxView(boxText: "Payment Calculation", imageName: "Interest", typeSF: false)
+                    }
+                    NavigationLink(destination: LoanCalculationView()){
+                        MenuBoxView(boxText: "Loan Calculation", imageName: "Interest", typeSF: false)
+                    }
+                    NavigationLink(destination: MortageCalculationView()){
+                        MenuBoxView(boxText: "Mortage Calculation", imageName: "Interest", typeSF: false)
+                    }
                 }
                 .flipsForRightToLeftLayoutDirection(true)
                 .navigationTitle("Financial Calculator")

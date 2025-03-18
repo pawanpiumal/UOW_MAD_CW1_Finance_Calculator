@@ -65,8 +65,12 @@ struct InterestCalculationView: View {
             }
         }
         
-        if (result.isNaN || result.isInfinite) {
-            result = 0.0;
+        if(result.isInfinite){
+            return "Infinite"
+        }
+        
+        if(result.isNaN){
+            return "Enter valid inputs"
         }
         return String(format : "%.2f", result)
     }

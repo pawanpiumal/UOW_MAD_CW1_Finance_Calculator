@@ -70,9 +70,14 @@ struct AnnuityCalculationView: View {
             }
         }
         
-        if(result.isNaN || result.isInfinite){
-            result = 0.00
+        if(result.isInfinite){
+            return "Infinite"
         }
+        
+        if(result.isNaN){
+            return "Enter valid inputs"
+        }
+            
         
         return String(format : "%.2f", result)
     }
